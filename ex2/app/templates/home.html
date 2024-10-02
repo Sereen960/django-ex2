@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Application using Django Framework</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        h1, h2 { font-weight: bold; }
+        form { margin: 20px 0; }
+        input[type="text"] { padding: 5px; }
+        input[type="submit"] { padding: 5px 10px; }
+    </style>
+</head>
+<body>
+    <h1>Kamaraj College of Engineering and Technology</h1>
+    <h3>Web Applications using Django Framework</h3>
+    <p>sereen fathima gani(22uit103) </p>
+    <h2>Creating and Working with Template</h2>
+
+    <h3>ODD or EVEN Checker</h3>
+    <form method="get">
+        <label>Enter a number: <input type="text" name="number"></label>
+        <input type="submit" value="Check">
+    </form>
+    {% if number_result %}
+        <p>{{ number_result }}</p>
+    {% endif %}
+
+    <h3>Name Filter</h3>
+    <form method="get">
+        <label>Enter a character: <input type="text" name="character"></label>
+        <input type="submit" value="Search">
+    </form>
+    {% if name_filter_result %}
+    <ul>
+        {% for name in name_filter_result %}
+            <li>{{ name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    {% if request.GET.character %}
+        <p>No names found starting with '{{ request.GET.character }}'.</p>
+    {% endif %}
+{% endif %}
+</body>
+</html>
